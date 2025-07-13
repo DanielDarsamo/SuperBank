@@ -10,7 +10,8 @@ export async function middleware(req: NextRequest) {
     '/account-opening',
     '/queue-management',
     '/banking-services',
-    '/admin'
+    '/admin',
+    '/(dashboard)'
   ];
 
   // Admin routes that require admin role
