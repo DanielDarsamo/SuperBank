@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -40,6 +40,7 @@ export default function AccountOpeningPage() {
   const { user, language } = useAppStore();
   const { t } = useTranslation(language);
   const [step, setStep] = useState<AccountStep>('personal');
+  const [isLoading, setIsLoading] = useState(true);
   const [formData, setFormData] = useState<Partial<FormData>>({});
   const [idPreview, setIdPreview] = useState<string | null>(null);
   const [incomePreview, setIncomePreview] = useState<string | null>(null);
@@ -107,8 +108,15 @@ export default function AccountOpeningPage() {
     }
   };
 
-  if (!user) {
-    router.push('/login');
+  useEffect(() => {
+    if (!user) {
+      router.push('/login');
+      return;
+    }
+    setIsLoading(false);
+  }, [user, router]);
+
+  if (isLoading || !user) {
     return null;
   }
 
