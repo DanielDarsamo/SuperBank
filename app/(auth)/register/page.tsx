@@ -28,8 +28,6 @@ import {
 import { registrationSchema } from '@/lib/validation/security-schemas';
 import { useAppStore } from '@/store/app-store';
 import { useTranslation } from '@/lib/translations';
-import { SecurityUtils } from '@/lib/security/encryption';
-import { AuditLogger } from '@/lib/security/audit';
 import Link from 'next/link';
 
 type RegisterStep = 'personal' | 'contact' | 'credentials' | 'security' | 'verification' | 'complete';
@@ -221,7 +219,7 @@ export default function RegisterPage() {
     try {
       if (code === verificationCode || code === '123456') {
         // Generate account number
-        const newAccountNumber = SecurityUtils.generateAccountNumber();
+        const newAccountNumber = 'ACC' + Math.random().toString().slice(2, 11);
         setAccountNumber(newAccountNumber);
 
         // Create user account
@@ -235,19 +233,6 @@ export default function RegisterPage() {
 
         setUser(mockUser);
         
-        // Log successful registration
-        await AuditLogger.log(
-          mockUser.id,
-          'ACCOUNT_CREATED',
-          { 
-            accountNumber: newAccountNumber,
-            registrationMethod: 'web',
-            twoFactorMethod: registrationData.twoFactorMethod
-          },
-          { ip: '127.0.0.1', userAgent: navigator.userAgent },
-          'medium'
-        );
-
         setStep('complete');
         toast.success('Account created successfully!');
       } else {
