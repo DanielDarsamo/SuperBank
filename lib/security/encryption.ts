@@ -95,7 +95,7 @@ export class SecurityUtils {
 
   // TOTP for 2FA (Time-based One-Time Password)
   static generateTOTPSecret(): string {
-    return crypto.randomBytes(20).toString('base32');
+    return crypto.randomBytes(20).toString('base64');
   }
 
   // Validate TOTP code
@@ -116,7 +116,7 @@ export class SecurityUtils {
 
   private static generateTOTPToken(secret: string, timeStep: number): string {
     // Simplified TOTP generation - use proper library in production
-    const hmac = crypto.createHmac('sha1', Buffer.from(secret, 'base32'));
+    const hmac = crypto.createHmac('sha1', Buffer.from(secret, 'base64'));
     hmac.update(Buffer.from(timeStep.toString()));
     const hash = hmac.digest();
     
