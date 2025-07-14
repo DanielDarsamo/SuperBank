@@ -32,7 +32,7 @@ export class SecurityUtils {
   // AES-256-GCM encryption for sensitive data
   static encrypt(text: string): { encrypted: string; iv: string; tag: string } {
     const iv = crypto.randomBytes(IV_LENGTH);
-    const cipher = crypto.createCipher(ENCRYPTION_ALGORITHM, this.encryptionKey);
+    const cipher = crypto.createCipheriv(ENCRYPTION_ALGORITHM, this.encryptionKey, iv);
     cipher.setAAD(Buffer.from('additional-data'));
     
     let encrypted = cipher.update(text, 'utf8', 'hex');
@@ -48,7 +48,7 @@ export class SecurityUtils {
   }
 
   static decrypt(encryptedData: { encrypted: string; iv: string; tag: string }): string {
-    const decipher = crypto.createDecipher(ENCRYPTION_ALGORITHM, this.encryptionKey);
+    const decipher = crypto.createDecipheriv(ENCRYPTION_ALGORITHM, this.encryptionKey, Buffer.from(encryptedData.iv, 'hex'));
     decipher.setAAD(Buffer.from('additional-data'));
     decipher.setAuthTag(Buffer.from(encryptedData.tag, 'hex'));
     
