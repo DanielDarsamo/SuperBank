@@ -53,7 +53,7 @@ export function Navigation() {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-fnb-teal rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">FNB</span>
               </div>
               <span className="font-bold text-xl text-gray-900">FNB</span>
@@ -69,7 +69,7 @@ export function Navigation() {
                 className={cn(
                   'px-3 py-2 rounded-md text-sm font-medium transition-colors',
                   pathname === item.href
-                    ? 'bg-blue-100 text-blue-700'
+                    ? 'bg-fnb-light-teal text-fnb-teal'
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                 )}
               >
@@ -84,7 +84,7 @@ export function Navigation() {
                 className={cn(
                   'px-3 py-2 rounded-md text-sm font-medium transition-colors',
                   pathname === item.href
-                    ? 'bg-blue-100 text-blue-700'
+                    ? 'bg-fnb-light-teal text-fnb-teal'
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                 )}
               >
@@ -132,7 +132,7 @@ export function Navigation() {
                         className={cn(
                           'flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors',
                           pathname === item.href
-                            ? 'bg-blue-100 text-blue-700'
+                            ? 'bg-fnb-light-teal text-fnb-teal'
                             : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                         )}
                       >
@@ -152,7 +152,7 @@ export function Navigation() {
                         className={cn(
                           'flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors',
                           pathname === item.href
-                            ? 'bg-blue-100 text-blue-700'
+                            ? 'bg-fnb-light-teal text-fnb-teal'
                             : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                         )}
                       >

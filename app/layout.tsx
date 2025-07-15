@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/sonner';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'MozBank - Digital Banking for Mozambique',
+  title: 'FNB - Digital Banking for Africa',
   description: 'Modern banking services with queue management and mobile-friendly interface',
 };
 
