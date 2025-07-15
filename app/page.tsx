@@ -112,21 +112,21 @@ export default function HomePage() {
       description: 'Premium banking with exclusive benefits',
       benefits: ['No monthly fees', 'Free transfers', 'Priority support', 'Travel insurance'],
       monthlyFee: 'Free',
-      minBalance: '$1,000'
+      minBalance: '1,000Mzn'
     },
     {
       name: 'FNB Easy Account',
       description: 'Simple banking for everyday needs',
       benefits: ['Low minimum balance', 'Basic banking services', 'Mobile banking', 'ATM access'],
-      monthlyFee: '$5',
-      minBalance: '$100'
+      monthlyFee: '200 Mzn',
+      minBalance: '5000 Mzn'
     },
     {
       name: 'FNB Student Account',
       description: 'Banking designed for students',
       benefits: ['No account fees', 'Student discounts', 'Online banking', 'Budgeting tools'],
       monthlyFee: 'Free',
-      minBalance: '$0'
+      minBalance: '500 Mzn'
     }
   ];
 
