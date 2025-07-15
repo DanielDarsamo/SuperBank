@@ -319,10 +319,10 @@ export default function HomePage() {
                       </div>
                       <h3 className="text-xl font-semibold mb-2 text-fnb-black">{benefit.title}</h3>
                       <p className="text-gray-600">{benefit.description}</p>
+                      <div className="mt-2 text-sm font-medium text-fnb-teal">{benefit.stats}</div>
                     </div>
                   );
                 })}
-                    <div className="mt-2 text-sm font-medium text-fnb-teal">{benefit.stats}</div>
               </div>
             </div>
           </div>
