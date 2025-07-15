@@ -124,10 +124,6 @@ export default function HomePage() {
               </Button>
               <Button asChild variant="outline" size="lg" className="text-lg px-8 border-fnb-teal text-fnb-teal hover:bg-fnb-light-teal">
                 <Link href="/register">
-                  Open Account
-                </Link>
-              </Button>
-            </div>
 
             {/* Banking Services Section */}
             <div className="mb-16">
