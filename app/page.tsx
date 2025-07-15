@@ -12,7 +12,8 @@ import {
   Shield, 
   Smartphone, 
   Users,
-  ArrowRight
+  ArrowRight,
+  CheckCircle
 } from 'lucide-react';
 import { useAppStore } from '@/store/app-store';
 import { useTranslation } from '@/lib/translations';
@@ -290,107 +291,6 @@ export default function HomePage() {
             Account
           </Button>
           <Button variant="outline" className="h-20 flex-col border-fnb-teal text-fnb-teal hover:bg-fnb-light-teal">
-            <Shield className="w-6 h-6 mb-2" />
-            Support
-          </Button>
-        </div>
-      </div>
-    </PageLayout>
-  );
-}
-                  Learn More
-                </Link>
-              </Button>
-            </div>
-
-            {/* Features Grid */}
-            <div className="grid md:grid-cols-3 gap-6 mb-16">
-              {features.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <Card key={index} className="hover:shadow-lg transition-shadow cursor-pointer">
-                    <CardHeader className="text-center">
-                      <div className={`w-12 h-12 rounded-lg ${feature.color} flex items-center justify-center mx-auto mb-4`}>
-                        <Icon className="w-6 h-6" />
-                      </div>
-                      <CardTitle className="text-xl">{feature.title}</CardTitle>
-                      <CardDescription className="text-base">
-                        {feature.description}
-                      </CardDescription>
-                    </CardHeader>
-                  </Card>
-                );
-              })}
-            </div>
-
-            {/* Benefits Section */}
-            <div className="bg-white rounded-2xl p-8 shadow-sm">
-              <h2 className="text-3xl font-bold text-center mb-8">Why Choose MozBank?</h2>
-              <div className="grid md:grid-cols-3 gap-8">
-                {benefits.map((benefit, index) => {
-                  const Icon = benefit.icon;
-                  return (
-                    <div key={index} className="text-center">
-                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Icon className="w-8 h-8 text-blue-600" />
-                      </div>
-                      <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                      <p className="text-gray-600">{benefit.description}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </PageLayout>
-    );
-  }
-
-  return (
-    <PageLayout title={`${t('welcome')}, ${user.phone}`}>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature, index) => {
-          const Icon = feature.icon;
-          return (
-            <Card key={index} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className={`w-12 h-12 rounded-lg ${feature.color} flex items-center justify-center mb-4`}>
-                  <Icon className="w-6 h-6" />
-                </div>
-                <CardTitle>{feature.title}</CardTitle>
-                <CardDescription>{feature.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button asChild className="w-full">
-                  <Link href={feature.href}>
-                    Access Service
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </div>
-
-      {/* Quick Actions */}
-      <div className="mt-8 bg-white rounded-lg p-6 shadow-sm">
-        <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Button variant="outline" className="h-20 flex-col">
-            <CreditCard className="w-6 h-6 mb-2" />
-            Balance
-          </Button>
-          <Button variant="outline" className="h-20 flex-col">
-            <Clock className="w-6 h-6 mb-2" />
-            Queue
-          </Button>
-          <Button variant="outline" className="h-20 flex-col">
-            <UserPlus className="w-6 h-6 mb-2" />
-            Account
-          </Button>
-          <Button variant="outline" className="h-20 flex-col">
             <Shield className="w-6 h-6 mb-2" />
             Support
           </Button>
