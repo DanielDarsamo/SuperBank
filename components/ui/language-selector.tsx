@@ -26,9 +26,9 @@ export function LanguageSelector() {
   const handleLanguageChange = (newLanguage: Language) => {
     setLanguage(newLanguage);
     setIsOpen(false);
-    
+
     // Update document direction for RTL support
-    document.documentElement.dir = newLanguage === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = newLanguage === 'pt' ? 'ltr' : 'ltr';
     document.documentElement.lang = newLanguage;
   };
 

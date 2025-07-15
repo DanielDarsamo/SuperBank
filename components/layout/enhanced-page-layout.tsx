@@ -18,7 +18,7 @@ export function EnhancedPageLayout({ children, title, description }: EnhancedPag
   // Set document language and direction
   useEffect(() => {
     document.documentElement.lang = language;
-    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+   document.documentElement.dir = (language && (language as string) === 'ar') ? 'rtl' : 'ltr';
   }, [language]);
 
   // Set viewport meta tag for proper mobile scaling
