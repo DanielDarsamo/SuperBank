@@ -11,6 +11,20 @@ export const translations = {
     edit: 'Edit',
     delete: 'Delete',
     confirm: 'Confirm',
+    help: 'Help',
+    support: 'Support',
+    close: 'Close',
+    search: 'Search',
+    filter: 'Filter',
+    all: 'All',
+    yes: 'Yes',
+    no: 'No',
+    tryAgain: 'Try Again',
+    goHome: 'Go Home',
+    error: 'Error',
+    success: 'Success',
+    warning: 'Warning',
+    info: 'Information',
     
     // Auth
     login: 'Login',
@@ -65,6 +79,20 @@ export const translations = {
     faq: 'Frequently Asked Questions',
     searchFaq: 'Search FAQ',
     contactSupport: 'Contact Support',
+    wasThisHelpful: 'Was this helpful?',
+    thankYouFeedback: 'Thank you for your feedback!',
+    improveAnswer: 'We\'ll work to improve this answer.',
+    noFaqsFound: 'No FAQs found matching your search.',
+    tryDifferentKeywords: 'Try different keywords or browse categories.',
+    stillNeedHelp: 'Still need help?',
+    liveChat: 'Live Chat',
+    emailSupport: 'Email Support',
+    callUs: 'Call Us',
+    available24x7: 'Available 24/7',
+    avgResponseTime: 'Average response time: 2 minutes',
+    connectingChat: 'Connecting you to live chat...',
+    openingEmail: 'Opening email client...',
+    initiatingCall: 'Initiating phone call...',
     
     // Admin
     adminDashboard: 'Admin Dashboard',
@@ -75,6 +103,20 @@ export const translations = {
     totalApplications: 'Total Applications',
     pendingApplications: 'Pending Applications',
     activeQueues: 'Active Queues',
+    
+    // Performance & Errors
+    slowPageLoad: 'Slow page load detected. Please check your connection.',
+    somethingWentWrong: 'Something went wrong',
+    unexpectedError: 'We\'re sorry, but something unexpected happened. Our team has been notified.',
+    errorReported: 'Error has been reported automatically.',
+    
+    // Accessibility
+    skipToContent: 'Skip to main content',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    selectLanguage: 'Select language',
+    searchPlaceholder: 'Search...',
+    loadingContent: 'Loading content...',
   },
   pt: {
     // Common
@@ -88,6 +130,20 @@ export const translations = {
     edit: 'Editar',
     delete: 'Excluir',
     confirm: 'Confirmar',
+    help: 'Ajuda',
+    support: 'Suporte',
+    close: 'Fechar',
+    search: 'Pesquisar',
+    filter: 'Filtrar',
+    all: 'Todos',
+    yes: 'Sim',
+    no: 'Não',
+    tryAgain: 'Tentar Novamente',
+    goHome: 'Ir para Início',
+    error: 'Erro',
+    success: 'Sucesso',
+    warning: 'Aviso',
+    info: 'Informação',
     
     // Auth
     login: 'Entrar',
@@ -142,6 +198,20 @@ export const translations = {
     faq: 'Perguntas Frequentes',
     searchFaq: 'Pesquisar FAQ',
     contactSupport: 'Contatar Suporte',
+    wasThisHelpful: 'Isso foi útil?',
+    thankYouFeedback: 'Obrigado pelo seu feedback!',
+    improveAnswer: 'Trabalharemos para melhorar esta resposta.',
+    noFaqsFound: 'Nenhuma FAQ encontrada para sua pesquisa.',
+    tryDifferentKeywords: 'Tente palavras-chave diferentes ou navegue pelas categorias.',
+    stillNeedHelp: 'Ainda precisa de ajuda?',
+    liveChat: 'Chat ao Vivo',
+    emailSupport: 'Suporte por Email',
+    callUs: 'Ligue para Nós',
+    available24x7: 'Disponível 24/7',
+    avgResponseTime: 'Tempo médio de resposta: 2 minutos',
+    connectingChat: 'Conectando você ao chat ao vivo...',
+    openingEmail: 'Abrindo cliente de email...',
+    initiatingCall: 'Iniciando chamada telefônica...',
     
     // Admin
     adminDashboard: 'Painel Administrativo',
@@ -152,6 +222,20 @@ export const translations = {
     totalApplications: 'Total de Aplicações',
     pendingApplications: 'Aplicações Pendentes',
     activeQueues: 'Filas Ativas',
+    
+    // Performance & Errors
+    slowPageLoad: 'Carregamento lento detectado. Verifique sua conexão.',
+    somethingWentWrong: 'Algo deu errado',
+    unexpectedError: 'Desculpe, algo inesperado aconteceu. Nossa equipe foi notificada.',
+    errorReported: 'Erro foi reportado automaticamente.',
+    
+    // Accessibility
+    skipToContent: 'Pular para o conteúdo principal',
+    openMenu: 'Abrir menu',
+    closeMenu: 'Fechar menu',
+    selectLanguage: 'Selecionar idioma',
+    searchPlaceholder: 'Pesquisar...',
+    loadingContent: 'Carregando conteúdo...',
   },
 };
 
