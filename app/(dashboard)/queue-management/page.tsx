@@ -24,6 +24,7 @@ import {
   DollarSign,
   RefreshCw
 } from 'lucide-react';
+import { BackButton } from '@/components/ui/back-button';
 import { queueJoinSchema } from '@/lib/validation/schemas';
 import { useAppStore } from '@/store/app-store';
 import { useTranslation } from '@/lib/translations';
@@ -83,6 +84,9 @@ export default function QueueManagementPage() {
     }
   });
 
+  // Allow non-authenticated users to explore basic features
+  const isExploreMode = !user;
+
   // Simulate real-time queue updates
   useEffect(() => {
     if (currentQueue) {
@@ -109,7 +113,8 @@ export default function QueueManagementPage() {
 
   const handleJoinQueue = async (data: { branchId: string; serviceType: string }) => {
     if (!user) {
-      router.push('/login');
+      // For explore mode, show demo functionality
+      toast.info('Please log in to join a real queue. This is a demo preview.');
       return;
     }
 
@@ -185,22 +190,38 @@ export default function QueueManagementPage() {
     }
   };
 
-  if (!user) {
-    router.push('/login');
-    return null;
-  }
-
   return (
+    <>
+      <BackButton />
     <PageLayout 
       title={t('queueManagement')} 
       description="Join virtual queues and track your position in real-time"
     >
       <div className="max-w-4xl mx-auto space-y-8">
+        {isExploreMode && (
+          <Card className="border-fnb-orange bg-orange-50">
+            <CardContent className="pt-6">
+              <div className="flex items-center space-x-3">
+                <AlertCircle className="w-6 h-6 text-fnb-orange" />
+                <div>
+                  <p className="font-medium text-fnb-black">Demo Mode</p>
+                  <p className="text-sm text-gray-600">
+                    You're exploring queue management features. 
+                    <Link href="/login" className="text-fnb-teal hover:underline ml-1">
+                      Log in
+                    </Link> to join real queues.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Current Queue Status */}
         {currentQueue && (
-          <Card className="border-blue-200 bg-blue-50">
+          <Card className="border-fnb-light-teal bg-fnb-light-teal">
             <CardHeader>
-              <CardTitle className="flex items-center text-blue-900">
+              <CardTitle className="flex items-center text-fnb-teal">
                 <Clock className="w-5 h-5 mr-2" />
                 Current Queue Status
               </CardTitle>
@@ -208,16 +229,16 @@ export default function QueueManagementPage() {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-blue-900">#{currentQueue.queue_number}</p>
-                  <p className="text-sm text-blue-700">Queue Number</p>
+                  <p className="text-2xl font-bold text-fnb-teal">#{currentQueue.queue_number}</p>
+                  <p className="text-sm text-fnb-black">Queue Number</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-blue-900">{queuePosition}</p>
-                  <p className="text-sm text-blue-700">Position</p>
+                  <p className="text-2xl font-bold text-fnb-teal">{queuePosition}</p>
+                  <p className="text-sm text-fnb-black">Position</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-blue-900">{queuePosition * 15}m</p>
-                  <p className="text-sm text-blue-700">Est. Wait</p>
+                  <p className="text-2xl font-bold text-fnb-teal">{queuePosition * 15}m</p>
+                  <p className="text-sm text-fnb-black">Est. Wait</p>
                 </div>
                 <div className="text-center">
                   <Badge className={getStatusColor(currentQueue.status)}>
@@ -347,7 +368,12 @@ export default function QueueManagementPage() {
                   )}
                 </div>
 
-                <Button type="submit" className="w-full" size="lg" disabled={isJoining}>
+                <Button 
+                  type="submit" 
+                  className="w-full bg-fnb-teal hover:bg-fnb-teal/90" 
+                  size="lg" 
+                  disabled={isJoining}
+                >
                   {isJoining ? (
                     <>
                       <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
@@ -390,7 +416,7 @@ export default function QueueManagementPage() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-sm text-gray-600">Status</span>
-                    <Badge className={branch.status === 'open' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}>
+                    <Badge className={branch.status === 'open' ? 'bg-green-100 text-green-800 border-green-200' : 'bg-red-100 text-red-800 border-red-200'}>
                       {branch.status.toUpperCase()}
                     </Badge>
                   </div>
@@ -433,5 +459,6 @@ export default function QueueManagementPage() {
         </Card>
       </div>
     </PageLayout>
+    </>
   );
 }

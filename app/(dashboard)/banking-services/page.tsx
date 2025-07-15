@@ -28,6 +28,7 @@ import {
   CheckCircle,
   AlertCircle
 } from 'lucide-react';
+import { BackButton } from '@/components/ui/back-button';
 import { transferSchema } from '@/lib/validation/schemas';
 import { useAppStore } from '@/store/app-store';
 import { useTranslation } from '@/lib/translations';
@@ -94,6 +95,7 @@ export default function BankingServicesPage() {
   const [accountBalance] = useState(45750.50); // Mock balance
   const [isLoading, setIsLoading] = useState(false);
   const [selectedBill, setSelectedBill] = useState('');
+  const isExploreMode = !user;
 
   const transferForm = useForm({
     resolver: zodResolver(transferSchema),
@@ -113,12 +115,15 @@ export default function BankingServicesPage() {
   });
 
   useEffect(() => {
-    if (!user) {
-      router.push('/login');
-    }
-  }, [user, router]);
+    // Allow exploration mode for non-authenticated users
+  }, []);
 
   const handleTransfer = async (data: any) => {
+    if (!user) {
+      toast.info('Please log in to perform real transactions. This is a demo preview.');
+      return;
+    }
+
     setIsLoading(true);
     try {
       // Simulate API call
@@ -146,6 +151,11 @@ export default function BankingServicesPage() {
   };
 
   const handleBillPayment = async (data: any) => {
+    if (!user) {
+      toast.info('Please log in to pay real bills. This is a demo preview.');
+      return;
+    }
+
     setIsLoading(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -185,24 +195,41 @@ export default function BankingServicesPage() {
     });
   };
 
-  if (!user) {
-    return null;
-  }
-
   return (
+    <>
+      <BackButton />
     <PageLayout 
       title={t('bankingServices')} 
       description="Access your banking services with USSD-style interface"
     >
       <div className="max-w-2xl mx-auto">
+        {isExploreMode && (
+          <Card className="mb-6 border-fnb-orange bg-orange-50">
+            <CardContent className="pt-6">
+              <div className="flex items-center space-x-3">
+                <AlertCircle className="w-6 h-6 text-fnb-orange" />
+                <div>
+                  <p className="font-medium text-fnb-black">Demo Mode</p>
+                  <p className="text-sm text-gray-600">
+                    You're exploring banking services. 
+                    <Link href="/login" className="text-fnb-teal hover:underline ml-1">
+                      Log in
+                    </Link> to access real banking features.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* USSD-style Header */}
-        <Card className="mb-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+        <Card className="mb-6 bg-gradient-to-r from-fnb-teal to-fnb-teal/90 text-white">
           <CardContent className="pt-6">
             <div className="text-center">
-              <h2 className="text-xl font-bold mb-2">MozBank Services</h2>
-              <p className="text-blue-100">*181# Style Interface</p>
+              <h2 className="text-xl font-bold mb-2">FNB Services</h2>
+              <p className="text-fnb-white/80">*181# Style Interface</p>
               <div className="mt-4 p-3 bg-white/10 rounded-lg">
-                <p className="text-sm">Account: {user.phone}</p>
+                <p className="text-sm">Account: {user?.phone || 'Demo Account'}</p>
                 <p className="text-lg font-bold">{formatCurrency(accountBalance)}</p>
               </div>
             </div>
@@ -226,8 +253,8 @@ export default function BankingServicesPage() {
                   onClick={() => setCurrentService('balance')}
                 >
                   <div className="flex items-center w-full">
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                      <Eye className="w-5 h-5 text-blue-600" />
+                    <div className="w-10 h-10 bg-fnb-light-teal rounded-lg flex items-center justify-center mr-4">
+                      <Eye className="w-5 h-5 text-fnb-teal" />
                     </div>
                     <div className="flex-1">
                       <p className="font-medium">1. Check Balance</p>
@@ -278,7 +305,7 @@ export default function BankingServicesPage() {
                 >
                   <div className="flex items-center w-full">
                     <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
-                      <CreditCard className="w-5 h-5 text-orange-600" />
+                      <CreditCard className="w-5 h-5 text-fnb-orange" />
                     </div>
                     <div className="flex-1">
                       <p className="font-medium">4. Transaction History</p>
@@ -302,9 +329,9 @@ export default function BankingServicesPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="text-center p-6 bg-blue-50 rounded-lg">
+              <div className="text-center p-6 bg-fnb-light-teal rounded-lg">
                 <p className="text-sm text-gray-600 mb-2">Available Balance</p>
-                <p className="text-3xl font-bold text-blue-600">{formatCurrency(accountBalance)}</p>
+                <p className="text-3xl font-bold text-fnb-teal">{formatCurrency(accountBalance)}</p>
                 <p className="text-xs text-gray-500 mt-2">As of {new Date().toLocaleString()}</p>
               </div>
 
@@ -360,8 +387,8 @@ export default function BankingServicesPage() {
             </CardHeader>
             <CardContent>
               <form onSubmit={transferForm.handleSubmit(handleTransfer)} className="space-y-6">
-                <div className="p-4 bg-blue-50 rounded-lg">
-                  <p className="text-sm text-blue-800">
+                <div className="p-4 bg-fnb-light-teal rounded-lg">
+                  <p className="text-sm text-fnb-teal">
                     Available Balance: <strong>{formatCurrency(accountBalance)}</strong>
                   </p>
                 </div>
@@ -410,7 +437,7 @@ export default function BankingServicesPage() {
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Cancel
                   </Button>
-                  <Button type="submit" disabled={isLoading} className="flex-1">
+                  <Button type="submit" disabled={isLoading} className="flex-1 bg-fnb-teal hover:bg-fnb-teal/90">
                     {isLoading ? 'Processing...' : 'Send Money'}
                     <Send className="w-4 h-4 ml-2" />
                   </Button>
@@ -434,8 +461,8 @@ export default function BankingServicesPage() {
             </CardHeader>
             <CardContent>
               <form onSubmit={billForm.handleSubmit(handleBillPayment)} className="space-y-6">
-                <div className="p-4 bg-blue-50 rounded-lg">
-                  <p className="text-sm text-blue-800">
+                <div className="p-4 bg-fnb-light-teal rounded-lg">
+                  <p className="text-sm text-fnb-teal">
                     Available Balance: <strong>{formatCurrency(accountBalance)}</strong>
                   </p>
                 </div>
@@ -498,7 +525,7 @@ export default function BankingServicesPage() {
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Cancel
                   </Button>
-                  <Button type="submit" disabled={isLoading || !selectedBill} className="flex-1">
+                  <Button type="submit" disabled={isLoading || !selectedBill} className="flex-1 bg-fnb-teal hover:bg-fnb-teal/90">
                     {isLoading ? 'Processing...' : 'Pay Bill'}
                     <Receipt className="w-4 h-4 ml-2" />
                   </Button>
@@ -596,5 +623,6 @@ export default function BankingServicesPage() {
         </Card>
       </div>
     </PageLayout>
+    </>
   );
 }

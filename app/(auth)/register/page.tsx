@@ -252,7 +252,7 @@ export default function RegisterPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
-            <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-fnb-teal rounded-xl flex items-center justify-center">
               <UserPlus className="w-6 h-6 text-white" />
             </div>
           </div>
@@ -292,12 +292,12 @@ export default function RegisterPage() {
                   <div key={stepItem.id} className="flex flex-col items-center flex-1">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center mb-1 ${
                       isCompleted ? 'bg-green-600 text-white' :
-                      isActive ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-500'
+                      isActive ? 'bg-fnb-teal text-white' : 'bg-gray-200 text-gray-500'
                     }`}>
                       <Icon className="w-4 h-4" />
                     </div>
                     <span className={`text-xs text-center ${
-                      isActive ? 'text-blue-600 font-medium' : 'text-gray-500'
+                      isActive ? 'text-fnb-teal font-medium' : 'text-gray-500'
                     }`}>
                       {stepItem.title}
                     </span>
@@ -461,7 +461,7 @@ export default function RegisterPage() {
                     <ArrowLeft className="mr-2 w-4 h-4" />
                     Back
                   </Button>
-                  <Button type="submit" className="flex-1">
+                  <Button type="submit" className="flex-1 bg-fnb-teal hover:bg-fnb-teal/90">
                     Continue to Credentials
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -567,7 +567,7 @@ export default function RegisterPage() {
                     <ArrowLeft className="mr-2 w-4 h-4" />
                     Back
                   </Button>
-                  <Button type="submit" className="flex-1">
+                  <Button type="submit" className="flex-1 bg-fnb-teal hover:bg-fnb-teal/90">
                     Continue to Security Setup
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -693,18 +693,18 @@ export default function RegisterPage() {
                     Account Created Successfully!
                   </h2>
                   <p className="text-gray-600">
-                    Welcome to MozBank. Your secure banking account is ready to use.
+                    Welcome to FNB. Your secure banking account is ready to use.
                   </p>
                 </div>
 
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <p className="text-sm text-blue-800 font-medium mb-2">Your Account Details:</p>
-                  <p className="text-sm text-blue-700">Account Number: <strong>{accountNumber}</strong></p>
-                  <p className="text-sm text-blue-700">Username: <strong>{registrationData.credentials?.username}</strong></p>
+                <div className="bg-fnb-light-teal p-4 rounded-lg">
+                  <p className="text-sm text-fnb-teal font-medium mb-2">Your Account Details:</p>
+                  <p className="text-sm text-fnb-black">Account Number: <strong>{accountNumber}</strong></p>
+                  <p className="text-sm text-fnb-black">Username: <strong>{registrationData.credentials?.username}</strong></p>
                 </div>
 
                 <div className="space-y-3">
-                  <Button onClick={() => router.push('/')} className="w-full" size="lg">
+                  <Button onClick={() => router.push('/')} className="w-full bg-fnb-teal hover:bg-fnb-teal/90" size="lg">
                     Access Your Account
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -719,7 +719,7 @@ export default function RegisterPage() {
             <div className="text-center">
               <p className="text-sm text-gray-600">
                 Already have an account?{' '}
-                <Link href="/login" className="text-blue-600 hover:underline">
+                <Link href="/login" className="text-fnb-teal hover:underline">
                   {t('login')}
                 </Link>
               </p>

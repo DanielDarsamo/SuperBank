@@ -20,6 +20,11 @@ const config: Config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       colors: {
+        'fnb-teal': '#007C7C',
+        'fnb-orange': '#F7931E',
+        'fnb-black': '#000000',
+        'fnb-white': '#FFFFFF',
+        'fnb-light-teal': '#D6F1F1',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {

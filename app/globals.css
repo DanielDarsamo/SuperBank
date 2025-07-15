@@ -18,6 +18,12 @@
 
 @layer base {
   :root {
+    --fnb-teal: #007C7C;
+    --fnb-orange: #F7931E;
+    --fnb-black: #000000;
+    --fnb-white: #FFFFFF;
+    --fnb-light-teal: #D6F1F1;
+    
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -79,4 +85,51 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* FNB Brand Colors */
+.bg-fnb-teal { background-color: var(--fnb-teal); }
+.bg-fnb-orange { background-color: var(--fnb-orange); }
+.bg-fnb-black { background-color: var(--fnb-black); }
+.bg-fnb-white { background-color: var(--fnb-white); }
+.bg-fnb-light-teal { background-color: var(--fnb-light-teal); }
+
+.text-fnb-teal { color: var(--fnb-teal); }
+.text-fnb-orange { color: var(--fnb-orange); }
+.text-fnb-black { color: var(--fnb-black); }
+.text-fnb-white { color: var(--fnb-white); }
+
+.border-fnb-teal { border-color: var(--fnb-teal); }
+.border-fnb-orange { border-color: var(--fnb-orange); }
+.border-fnb-light-teal { border-color: var(--fnb-light-teal); }
+
+.hover\:bg-fnb-teal\/90:hover { background-color: rgb(0 124 124 / 0.9); }
+.hover\:bg-fnb-light-teal:hover { background-color: var(--fnb-light-teal); }
+
+/* Back Button Styles */
+.back-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 50;
+  width: 44px;
+  height: 44px;
+  background-color: var(--fnb-teal);
+  color: var(--fnb-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.back-button:hover {
+  background-color: rgb(0 124 124 / 0.9);
+  transform: scale(1.05);
+}
+
+.back-button:focus {
+  outline: 2px solid var(--fnb-orange);
+  outline-offset: 2px;
 }

@@ -97,12 +97,12 @@ export default function LoginPage() {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
-            <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-lg">MB</span>
+            <div className="w-12 h-12 bg-fnb-teal rounded-xl flex items-center justify-center">
+              <span className="text-white font-bold text-lg">FNB</span>
             </div>
           </div>
-          <h1 className="text-2xl font-bold text-gray-900">MozBank</h1>
-          <p className="text-gray-600">Digital Banking for Mozambique</p>
+          <h1 className="text-2xl font-bold text-gray-900">FNB</h1>
+          <p className="text-gray-600">Digital Banking for Africa</p>
         </div>
 
         <Card className="shadow-xl border-0">
@@ -124,9 +124,9 @@ export default function LoginPage() {
 
             {/* Progress indicator */}
             <div className="flex space-x-2">
-              <div className={`h-2 rounded-full flex-1 ${step === 'phone' ? 'bg-blue-600' : 'bg-gray-200'}`} />
-              <div className={`h-2 rounded-full flex-1 ${step === 'otp' ? 'bg-blue-600' : 'bg-gray-200'}`} />
-              <div className={`h-2 rounded-full flex-1 ${step === 'pin' ? 'bg-blue-600' : 'bg-gray-200'}`} />
+              <div className={`h-2 rounded-full flex-1 ${step === 'phone' ? 'bg-fnb-teal' : 'bg-gray-200'}`} />
+              <div className={`h-2 rounded-full flex-1 ${step === 'otp' ? 'bg-fnb-teal' : 'bg-gray-200'}`} />
+              <div className={`h-2 rounded-full flex-1 ${step === 'pin' ? 'bg-fnb-teal' : 'bg-gray-200'}`} />
             </div>
           </CardHeader>
 
@@ -148,7 +148,7 @@ export default function LoginPage() {
                     <p className="text-sm text-red-600">{phoneForm.formState.errors.phone.message}</p>
                   )}
                 </div>
-                <Button type="submit" className="w-full" size="lg">
+                <Button type="submit" className="w-full bg-fnb-teal hover:bg-fnb-teal/90" size="lg">
                   {t('sendOtp')}
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
@@ -178,7 +178,7 @@ export default function LoginPage() {
                   <Button type="button" variant="outline" onClick={() => setStep('phone')} className="flex-1">
                     {t('back')}
                   </Button>
-                  <Button type="submit" className="flex-1">
+                  <Button type="submit" className="flex-1 bg-fnb-teal hover:bg-fnb-teal/90">
                     {t('verifyOtp')}
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -207,7 +207,7 @@ export default function LoginPage() {
                   <Button type="button" variant="outline" onClick={() => setStep('otp')} className="flex-1">
                     {t('back')}
                   </Button>
-                  <Button type="submit" className="flex-1">
+                  <Button type="submit" className="flex-1 bg-fnb-teal hover:bg-fnb-teal/90">
                     {t('login')}
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
@@ -218,7 +218,7 @@ export default function LoginPage() {
             <div className="text-center">
               <p className="text-sm text-gray-600">
                 Don't have an account?{' '}
-                <Link href="/register" className="text-blue-600 hover:underline">
+                <Link href="/register" className="text-fnb-teal hover:underline">
                   {t('register')}
                 </Link>
               </p>
